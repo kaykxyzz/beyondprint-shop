@@ -16,7 +16,7 @@
 
   /* summary */
   const sub = items.reduce((s, i) => s + i.total, 0);
-  $('#cklines').innerHTML = items.map(it => `<li><img src="${esc(it.img)}" alt=""><div><b>${esc(it.name)}</b><span>${it.qty} ${esc(it.unitLabel)}${it.deco ? ' · ' + esc(it.deco) : ''}${it.colourName ? ' · ' + esc(it.colourName) : ''}</span></div><b>${money(it.total)}</b></li>`).join('');
+  $('#cklines').innerHTML = items.map(it => `<li><img loading="lazy" decoding="async" src="${esc(it.img)}" alt=""><div><b>${esc(it.name)}</b><span>${it.qty} ${esc(it.unitLabel)}${it.deco ? ' · ' + esc(it.deco) : ''}${it.colourName ? ' · ' + esc(it.colourName) : ''}</span></div><b>${money(it.total)}</b></li>`).join('');
   const totals = () => {
     const m = SHIP[form.ship.value] || SHIP.standard, sh = m.cost(sub), tot = sub + sh;
     $('#cksub').textContent = money(sub); $('#ckship').textContent = sh ? money(sh) : 'Free';

@@ -51,7 +51,7 @@
     d.querySelector('[data-sub]').textContent = money(items.reduce((s, i) => s + i.total, 0));
     d.querySelector('.ck').classList.toggle('off', !n);
     list.innerHTML = n ? items.map((it, i) => `<div class="ci">
-        <img src="${esc(it.img)}" alt="">
+        <img loading="lazy" decoding="async" src="${esc(it.img)}" alt="">
         <div class="ci-b"><b>${esc(it.name)}</b><span class="ci-d">${detail(it)}</span>
           <span class="ci-d">${it.qty} ${esc(it.unitLabel)} · ${money(it.unit)} each${it.logo ? ' · logo attached' : ' · logo to follow'}</span></div>
         <div class="ci-r"><b>${money(it.total)}</b><button type="button" data-rm="${i}" aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('')

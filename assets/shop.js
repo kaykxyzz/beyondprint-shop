@@ -42,7 +42,7 @@
     const tiers = p.tiers.length > 1 ? `<div class="f"><span class="lab">Price per ${p.unit} by quantity</span><table class="tiers"><thead><tr>${p.tiers.map(([q]) => `<th>${q}+</th>`).join('')}</tr></thead>
       <tbody><tr>${p.tiers.map(([q, f]) => `<td data-q="${q}">${money(p.p * f)}</td>`).join('')}</tr></tbody></table></div>` : '';
     dlg.querySelector('.pd-body').innerHTML = `
-      <div class="pd-img"><img src="${p.img}" alt="${esc(p.n)}"></div>
+      <div class="pd-img"><img loading="lazy" decoding="async" src="${p.img}" alt="${esc(p.n)}"></div>
       <div class="pd-form">
         <span class="cat">${esc(p.c)}</span><h2 id="pdt">${esc(p.n)}</h2><p class="desc">${esc(p.d)}</p>
         ${colours}${sizes}${deco}${tiers}

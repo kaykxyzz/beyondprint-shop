@@ -26,7 +26,8 @@
   requestAnimationFrame(tick);
 })();
 
-(() => {
+/* Started only after the page has loaded and painted, so the WebGL setup never delays first paint. */
+const startHeroGL = () => {
   const hero = document.querySelector('.hero');
   const cv = hero && hero.querySelector('.hero-gl');
   if (!cv) return;
@@ -97,7 +98,8 @@ void main(){vec2 f=gl_FragCoord.xy;vec3 c=texture2D(uTex,f/uRes).rgb;
   const fbo = gl.createFramebuffer(), tex = gl.createTexture();
   let fw = 1, fh = 1;
   const size = () => {
-    const w = hero.clientWidth, h = hero.clientHeight, dpr = Math.min(devicePixelRatio || 1, 1.5);
+    // Soft gradient with no grain: half resolution looks identical once the browser scales it up, at a quarter of the GPU work.
+    const w = hero.clientWidth, h = hero.clientHeight, dpr = .5;
     cv.width = Math.max(1, Math.round(w * dpr)); cv.height = Math.max(1, Math.round(h * dpr));
     cv.style.width = w + 'px'; cv.style.height = h + 'px';
     fw = Math.max(1, Math.round(w * SCALE)); fh = Math.max(1, Math.round(h * SCALE));
@@ -118,6 +120,7 @@ void main(){vec2 f=gl_FragCoord.xy;vec3 c=texture2D(uTex,f/uRes).rgb;
   hero.classList.add('gl-on');
   window.BPHero = { V, C, setColor(k, v) { C[k] = v; B = hex(C.base); L = hex(C.light); H = hex(C.halo); } };
   function frame(now) {
+    if (now - last < 30) { requestAnimationFrame(frame); return; } // ~30fps is plenty for a slow drift
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     if (visible) {
       clock += dt;
@@ -140,4 +143,7 @@ void main(){vec2 f=gl_FragCoord.xy;vec3 c=texture2D(uTex,f/uRes).rgb;
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
-})();
+};
+const idle = window.requestIdleCallback || (cb => setTimeout(cb, 200));
+if (document.readyState === 'complete') idle(startHeroGL, { timeout: 1500 });
+else addEventListener('load', () => idle(startHeroGL, { timeout: 1500 }), { once: true });
