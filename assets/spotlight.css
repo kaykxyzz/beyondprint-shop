@@ -1,0 +1,176 @@
+:root{--fx-blur:1px;--fx-dim:.55}
+/* Focus cards: hovering a card softly blurs its neighbours. CSS only. */
+@media (hover:hover){
+  :is(.sgrid,.cgrid,.tgrid,.ggrid,.pgrid)>:is(.prod,.cat,.tile,.gitem,.pcard).on,
+  :is(.sgrid,.cgrid,.tgrid,.ggrid,.pgrid)>:is(.prod,.cat,.tile,.gitem,.pcard):not(.rev){
+    transition:filter .35s ease,opacity .35s ease,transform .22s ease,box-shadow .22s ease}
+  :is(.sgrid,.cgrid,.tgrid,.ggrid,.pgrid):has(>:hover)>:is(.prod,.cat,.tile,.gitem,.pcard):not(:hover){
+    filter:blur(var(--fx-blur)) saturate(.7);opacity:var(--fx-dim)}
+}
+@media (prefers-reduced-motion:reduce){
+  :is(.sgrid,.cgrid,.tgrid,.ggrid,.pgrid):has(>:hover)>:is(.prod,.cat,.tile,.gitem,.pcard):not(:hover){filter:none;opacity:.6}
+}
+
+/* Top bar: one underline that glides between links; the other links soften. */
+.nav nav{position:relative}
+.nav nav a,.nav nav a:hover,.nav nav a.on{border-bottom-color:transparent}
+.nav nav a{transition:filter .4s ease,opacity .4s ease}
+.nav nav .ind{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--bp-teal);pointer-events:none;opacity:0;
+  transition:transform .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1),opacity .3s ease}
+.nav nav.ind-on .ind{opacity:1}
+@media (hover:hover){.nav nav:has(a:hover) a:not(:hover){filter:blur(var(--fx-blur));opacity:var(--fx-dim)}}
+@media (prefers-reduced-motion:reduce){.nav nav .ind{transition:opacity .2s ease}.nav nav:has(a:hover) a:not(:hover){filter:none}}
+
+/* Real jobs: the hovered card floats up, grows and tilts with the cursor;
+   its neighbours make room and spring back like linked carriages. */
+.wgrid .pol.on,.wgrid .pol:not(.rev){--sx:0px;--ty:0px;--s:1;--rx:0deg;--ry:0deg;position:relative;
+  transform:perspective(900px) translateX(var(--sx)) translateY(var(--ty)) scale(var(--s)) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:opacity .6s ease,transform .75s cubic-bezier(.34,1.45,.64,1),box-shadow .5s ease}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .wgrid .pol.on:hover,.wgrid .pol:not(.rev):hover{--ty:-22px;--s:1.14;z-index:3;
+    transition:opacity .6s ease,transform .45s cubic-bezier(.22,1,.36,1),box-shadow .5s ease;
+    box-shadow:0 2px 4px rgba(17,20,23,.06),0 18px 34px -10px rgba(17,20,23,.2),0 44px 70px -24px rgba(39,110,102,.38)}
+  .wgrid .pol:hover+.pol{--sx:34px;--s:.94}
+  .wgrid .pol:hover+.pol~.pol{--sx:18px;--s:.97}
+  .wgrid .pol:has(+.pol:hover){--sx:-34px;--s:.94}
+  .wgrid .pol:has(+.pol+.pol:hover),.wgrid .pol:has(+.pol+.pol+.pol:hover){--sx:-18px;--s:.97}
+}
+@media (hover:hover) and (prefers-reduced-motion:reduce){
+  .wgrid .pol:hover{box-shadow:0 18px 34px -10px rgba(17,20,23,.2)}
+}
+
+/* Script accents: never fake-bold a stand-in font if Shelby can't load. */
+.script,.prod .price span{font-synthesis:none}
+
+/* Section headers: whatever sits on the right (button or script line) lines up with the headline. */
+@media (min-width:641px){
+  .sec-head:has(>.btn,>.script-tag){display:grid;grid-template-columns:1fr auto;column-gap:32px;align-items:center}
+  .sec-head:has(>.btn,>.script-tag)>div{display:contents}
+  .sec-head:has(>.btn,>.script-tag)>div>*{grid-column:1}
+  .sec-head:has(>.btn,>.script-tag)>div>.h2{grid-row:2}
+  .sec-head:has(>.btn,>.script-tag)>:is(.btn,.script-tag){grid-column:2;grid-row:2;justify-self:end}
+  .sec-head:has(>.btn,>.script-tag)>.btn{margin-top:-10px}
+  .sec-head:has(>.btn,>.script-tag)>.script-tag{margin-top:-10px;line-height:1}
+}
+
+/* Buttons: hovering one softens the buttons beside it; in the header, the button and the links soften each other. */
+@media (hover:hover){
+  .btn{transition:filter .35s ease,opacity .35s ease,background .18s,color .18s,border-color .18s,transform .18s,box-shadow .18s}
+  :has(>.btn:hover)>.btn:not(:hover){filter:blur(var(--fx-blur));opacity:var(--fx-dim)}
+  .nav:has(>.cta:hover) :is(nav a,.search),.nav:has(nav a:hover) :is(.cta,.search){filter:blur(var(--fx-blur));opacity:var(--fx-dim)}
+  .nav .search,.nav .cta{transition:filter .35s ease,opacity .35s ease,background .18s,color .18s}
+}
+@media (prefers-reduced-motion:reduce){
+  :has(>.btn:hover)>.btn:not(:hover),.nav:has(>.cta:hover) :is(nav a,.search),.nav:has(nav a:hover) :is(.cta,.search){filter:none}
+}
+
+/* Shelby accents: a few sizes up so the script reads clearly. */
+.sec-head .script-tag{font-size:32px}
+.phero .script-tag{font-size:clamp(30px,3.6vw,40px)}
+.chero .script-tag{font-size:clamp(32px,3.8vw,42px)}
+.proc .note .script{font-size:32px}
+.prod .price span{font-size:18px}
+.band .script{font-size:clamp(52px,7.4vw,82px)}
+h1 .script,h2 .script,.qpanel h2 .script,.ctaband h2 .script{font-size:1.15em}
+@media (max-width:640px){.sec-head .script-tag,.proc .note .script{font-size:28px}}
+@media (max-width:640px){table.spec{table-layout:fixed;width:100%}table.spec :is(td,th){overflow-wrap:anywhere}}
+
+/* Phones: one-line utility strip and a compact header button. */
+@media (max-width:640px){
+  .util .wrap>span{display:none}
+  .util .wrap{justify-content:center}
+  .util .r{display:flex}
+  .util .r a[href^="mailto"]{display:none}
+  .nav .cta{padding:11px 14px;font-size:11px;white-space:nowrap}
+  .nav .cta .arw{display:none}
+}
+
+/* Reduced motion: stop the ticker, the spinning badge and the scroll reveals. */
+@media (prefers-reduced-motion:reduce){
+  .marq .track,.badge{animation:none}
+  .rev{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* Desktop: wheel scrolling and anchor jumps are eased by nav.js, so the browser's own smooth scroll stays off */
+html.lerp-scroll{scroll-behavior:auto!important}
+
+/* Header product search (every page) */
+.nav .search{position:relative;display:flex;align-items:center;gap:8px;background:var(--grey-1,#f5f5f4);border:1px solid var(--grey-2,#e4e4e2);padding:0 14px;height:42px;min-width:210px;color:var(--grey-3,#5b6163);margin-right:16px;transition:border-color .18s,filter .35s ease,opacity .35s ease}
+.nav .search:focus-within{border-color:var(--bp-teal);background:#fff}
+.nav .search input{flex:1;min-width:0;border:0;background:transparent;font:400 13px var(--font-body,Poppins,sans-serif);color:var(--bp-black);outline:none;height:100%}
+.nav .search input::placeholder{color:var(--grey-3,#5b6163)}
+.nav .search input::-webkit-search-cancel-button{cursor:pointer}
+.sres{position:absolute;top:calc(100% + 6px);right:0;width:360px;max-width:80vw;list-style:none;margin:0;padding:6px;background:#fff;border:1px solid var(--bp-black);box-shadow:0 18px 40px -12px rgba(17,20,23,.28);z-index:70}
+.sres a{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 10px;color:var(--bp-black);text-decoration:none}
+.sres a b{font:500 13.5px var(--font-body,Poppins,sans-serif)}
+.sres a .c{grid-column:1;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-3,#5b6163)}
+.sres a .p{grid-column:2;grid-row:1/3;align-self:center;font-size:12.5px;color:var(--bp-teal-deep,#468e86);white-space:nowrap}
+.sres [aria-selected="true"] a,.sres a:hover{background:#eef7f5}
+.sres .none{padding:12px 10px;font-size:13px;color:var(--grey-3,#5b6163);line-height:1.5}
+.sres .none a{display:inline;padding:0;color:var(--bp-teal-deep,#468e86);text-decoration:underline}
+
+/* Back to top */
+.totop{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:55;width:48px;height:48px;border-radius:50%;border:0;background:var(--bp-black,#111417);color:#fff;
+  display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(17,20,23,.45);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .18s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--bp-charcoal,#24292b)}
+.totop:focus-visible{outline:2px solid var(--bp-teal,#5eafa6);outline-offset:3px}
+@media (max-width:640px){.totop{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:44px;height:44px}}
+@media (prefers-reduced-motion:reduce){.totop{transition:opacity .2s ease;transform:none}}
+@media (max-width:1000px){.nav .search{display:none}}
+@media (min-width:1001px) and (max-width:1180px){.nav .search{min-width:150px;margin-right:10px}}
+
+/* Cart button (every page) */
+.cartbtn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;margin-right:12px;background:transparent;border:1px solid var(--grey-2,#e4e4e2);color:var(--bp-black);
+  font:500 12px var(--font-tall,'Archivo',sans-serif);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:border-color .18s,filter .35s ease,opacity .35s ease}
+.cartbtn:hover{border-color:var(--bp-black)}
+.cartbtn .n{min-width:20px;height:20px;border-radius:10px;background:var(--grey-1,#f5f5f4);display:inline-grid;place-items:center;font-size:11px;letter-spacing:0;padding:0 6px}
+.cartbtn.has .n{background:var(--bp-teal);color:var(--bp-black)}
+.cartbtn:focus-visible{outline:2px solid var(--bp-teal);outline-offset:2px}
+@media (max-width:1000px){.cartbtn{margin-right:8px;padding:0 12px}.cartbtn .lbl{display:none}}
+.nav:has(nav a:hover) .cartbtn,.nav:has(>.cta:hover) .cartbtn{filter:blur(var(--fx-blur));opacity:var(--fx-dim)}
+
+/* Cart drawer */
+.cartd{position:fixed;inset:0;z-index:95}
+.cartd[hidden]{display:none}
+.cartd-scrim{position:absolute;inset:0;background:rgba(17,20,23,.45);opacity:0;transition:opacity .3s ease}
+.cartd-panel{position:absolute;top:0;right:0;bottom:0;width:min(420px,100vw);background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.cartd.on .cartd-scrim{opacity:1}.cartd.on .cartd-panel{transform:none}
+.cartd header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:2px solid var(--bp-black)}
+.cartd header b{font:400 20px var(--font-display);text-transform:uppercase}
+.cartd .x{width:44px;height:44px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:var(--bp-black)}
+.cartd-list{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 20px}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--grey-2,#e4e4e2);align-items:start}
+.ci img{width:64px;height:64px;object-fit:cover;border:1px solid var(--grey-2,#e4e4e2)}
+.ci-b b{display:block;font-size:14px;font-weight:500;color:var(--bp-black);line-height:1.3}
+.ci-d{display:block;font-size:12px;color:var(--grey-3,#5b6163);margin-top:3px;line-height:1.45}
+.ci-r{text-align:right}.ci-r b{display:block;font-size:14px;color:var(--bp-black)}
+.ci-r button{margin-top:6px;border:0;background:none;padding:6px 0;font-size:12px;color:var(--grey-3,#5b6163);text-decoration:underline;cursor:pointer}
+.ci-empty{text-align:center;padding:48px 0}.ci-empty p{margin-bottom:18px;color:var(--grey-3,#5b6163)}
+.cartd footer{padding:16px 20px 20px;border-top:1px solid var(--grey-2,#e4e4e2);display:grid;gap:10px}
+.cartd .sum{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--bp-black)}
+.cartd .sum small{color:var(--grey-3,#5b6163);font-size:11px}.cartd .sum b{font:400 22px var(--font-display)}
+.cartd .note{font-size:12px;color:var(--grey-3,#5b6163);line-height:1.5}
+.cartd .ck{justify-content:center}.cartd .ck.off{pointer-events:none;opacity:.4}
+.cartd .keep{border:0;background:none;padding:10px;font:500 12px var(--font-tall,'Archivo',sans-serif);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:var(--bp-black)}
+@media (prefers-reduced-motion:reduce){.cartd-panel,.cartd-scrim{transition:none}}
+
+/* Phones and tablets: drop the black utility strip so the page starts with the menu */
+@media (max-width:1100px){.util{display:none}}
+.util,.util *{white-space:nowrap}
+
+/* Comfortable tap targets for small links */
+footer.site ul a,.crumb a,.fbar a{display:inline-block;padding:5px 0;min-height:24px}
+footer.site .fcontact a{display:block;padding:5px 0}
+footer.site .fsocial a{min-width:40px;min-height:40px;display:inline-grid;place-items:center}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:2px solid var(--bp-teal,#5eafa6);outline-offset:2px}
+
+/* Header fits as items are added (menu, search, cart, quote) */
+.nav nav a{white-space:nowrap}
+.nav .cta{white-space:nowrap}
+@media (max-width:1360px) and (min-width:1001px){.nav nav{gap:20px}.nav .search{min-width:170px;margin-right:10px}.cartbtn{margin-right:10px}}
+@media (max-width:1240px) and (min-width:1001px){.nav .search{display:none}}
+@media (max-width:1100px) and (min-width:1001px){.nav nav{gap:16px}.nav nav a{font-size:11.5px}.cartbtn .lbl{display:none}}
+/* Phones: logo, cart and menu only; "Get a quote" lives in the menu */
+@media (max-width:640px){.nav .cta{display:none}.cartbtn{margin-right:8px;height:40px}}

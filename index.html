@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="bp-root" content="1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Beyond Print — Custom Apparel, Print &amp; Promo | Yeppoon QLD</title>
+<meta name="description" content="Custom apparel, print, stickers and promo under one roof in Yeppoon. In-house design studio, embroidery, DTG and wide-format print, with a showroom on the Capricorn Coast and delivery Australia-wide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/wrp3gzk.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bp-black:#111417; --bp-charcoal:#24292b; --bp-teal:#5eafa6; --bp-teal-deep:#468e86;
+  --bp-aqua:#a3dbd3; --bp-aqua-tint:#eef8f6; --bp-pink:#f8bec2; --bp-pink-tint:#fdf0f1;
+  --bp-white:#fff; --grey-1:#f5f5f4; --grey-2:#e4e4e2; --grey-3:#9b9d9c; --muted:#5b6163;
+  --font-body:'Poppins',sans-serif; --font-display:"obviously-wide",'Archivo',sans-serif;
+  --font-tall:"dunbar-tall",'Archivo',sans-serif; --font-script:"shelby",'Yellowtail',cursive;
+  --container:1200px; --sec:96px;
+  --sh-card:0 1px 2px rgba(17,20,23,.08); --sh-lift:0 8px 24px rgba(17,20,23,.14);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html.lerp-scroll{scroll-behavior:auto}
+body{font-family:var(--font-body);font-weight:400;letter-spacing:-.03em;color:var(--bp-charcoal);line-height:1.6;background:var(--bp-white);-webkit-font-smoothing:antialiased;font-stretch:82%}
+h1,h2,h3,.disp{overflow-wrap:break-word;font-family:var(--font-display);font-stretch:normal;font-weight:400;letter-spacing:-.01em;line-height:1.05;color:var(--bp-black);text-transform:uppercase}
+.tall{font-family:var(--font-tall);font-weight:500;letter-spacing:.09em;text-transform:uppercase}
+.script{font-family:var(--font-script);font-weight:700;letter-spacing:0;text-transform:none}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 32px}
+.kicker{display:flex;align-items:center;gap:10px;font-family:var(--font-tall);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--bp-teal-deep);margin-bottom:18px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--bp-teal)}
+.h2{font-size:clamp(30px,4.2vw,44px);margin-bottom:10px}
+.sub{font-size:17px;font-weight:300;color:var(--muted);max-width:560px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-tall);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:16px 28px;border:none;cursor:pointer;transition:all .22s var(--ease)}
+.btn .arw{font-family:var(--font-display);font-stretch:normal;font-weight:400}
+.btn-teal{background:var(--bp-teal);color:var(--bp-black)}
+.btn-teal:hover{background:var(--bp-teal-deep);color:#fff}
+.btn-dark{background:var(--bp-black);color:#fff}
+.btn-dark:hover{background:var(--bp-charcoal)}
+.btn-outline{background:transparent;color:var(--bp-black);border:2px solid var(--bp-black)}
+.btn-outline:hover{background:var(--bp-black);color:#fff}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rev.on{opacity:1;transform:none}
+
+/* utility strip */
+.util{background:var(--bp-black);color:#fff}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;font-family:var(--font-tall);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.util span b{color:var(--bp-aqua);font-weight:500}
+.util .r{display:flex;gap:26px}
+.util .r a:hover{color:var(--bp-aqua)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--grey-2);transition:box-shadow .22s var(--ease)}
+header.sc{box-shadow:var(--sh-card)}
+.nav{display:flex;align-items:center;gap:34px;height:76px}
+.nav .logo img{height:52px;width:52px}
+.nav nav{display:flex;gap:28px;font-family:var(--font-tall);font-weight:500;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-black)}
+.nav nav a{padding:6px 0;border-bottom:2px solid transparent;transition:border-color .15s}
+.nav nav a:hover{border-color:var(--bp-teal)}
+.nav .sp{flex:1}
+.nav .cta{padding:13px 22px}
+.burger{display:none;background:none;border:1px solid var(--grey-2);font-family:var(--font-tall);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;cursor:pointer}
+.mnav{display:none}
+
+/* hero — Poster Shop (Concept B), adapted to the shop-only brief */
+.hero{position:relative;overflow:hidden;text-align:center;
+  background:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.6)),url(assets/concrete.jpg) center/cover;
+  border-bottom:2px solid var(--bp-black)}
+.hero .wm{position:absolute;left:50%;top:calc(50% + var(--hd-h,77px) / 2);width:min(540px,82vw);opacity:.07;pointer-events:none;will-change:transform;
+  transform:translate(-50%,-50%) perspective(900px) rotateZ(-8deg) rotateY(var(--wry,0deg)) rotateX(var(--wrx,0deg)) translateY(var(--wfy,0px))}
+.hero{margin-top:calc(-1 * var(--hd-h,77px))}
+.hero .inner{position:relative;padding:calc(var(--hd-h,77px) + 36px) 20px 52px}
+.hero .loc{font-family:var(--font-tall);font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.hero h1{font-family:'Archivo',sans-serif;font-stretch:118%;font-weight:900;letter-spacing:-.015em;line-height:.98;font-size:clamp(46px,8.2vw,116px)}
+.hero h1 .l{display:block}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:3px var(--bp-black)}
+.hero .scriptover{position:relative;z-index:2;display:block;font-size:clamp(34px,4.8vw,60px);color:#fff;text-shadow:0 3px 14px rgba(17,20,23,.45);transform:rotate(-4deg);margin:-.5em 0 .1em}
+.hero .bar-line{margin:16px 0 24px}
+.hero .blackbar{display:inline-block;background:var(--bp-black);color:#fff;font-family:var(--font-tall);font-weight:500;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;padding:10px 20px}
+.hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .fine{margin-top:20px;font-size:12px;font-weight:300;color:var(--muted)}
+/* interactive gradient background (assets/hero-gradient.js); concrete stays as the fallback */
+.hero .hero-gl{position:absolute;left:0;top:0;width:100%;height:100%;display:block;pointer-events:none;opacity:0;transition:opacity .5s ease}
+.hero.gl-on{background:#316b64}
+.hero.gl-on .hero-gl{opacity:1}
+.hero.gl-on .wm{opacity:.09}
+.hero.gl-on .loc{color:#fff}
+.hero.gl-on .fine{color:var(--bp-charcoal)}
+.hero.gl-on .ctas .btn-teal{background:var(--bp-black);color:#fff}
+.hero.gl-on .ctas .btn-teal:hover{background:var(--bp-charcoal)}
+@media(max-width:640px){.hero .inner{padding:calc(var(--hd-h,64px) + 28px) 20px 44px}.hero h1 .outline{-webkit-text-stroke:2px var(--bp-black)}.hero .blackbar{font-size:11px;letter-spacing:.16em;line-height:1.6}}
+
+/* delivery & ordering */
+.shipfaq{padding:100px 0;background:var(--grey-1)}
+.sfgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px}
+.sf{background:#fff;border:2px solid var(--bp-black);padding:22px}
+.sf b{display:block;font-family:var(--font-tall);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--bp-black);margin-bottom:10px}
+.sf p{font-size:14px;line-height:1.6}
+@media(max-width:1000px){.sfgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.shipfaq{padding:64px 0}.sfgrid{grid-template-columns:1fr}}
+
+/* marquee */
+.marq{background:var(--bp-black);color:#fff;overflow:hidden;padding:18px 0;white-space:nowrap}
+.marq .track{display:inline-block;animation:mv 60s linear infinite;font-family:var(--font-body);font-weight:700;font-size:22px;letter-spacing:-.01em}
+.marq .track span{margin:0 34px}
+@keyframes mv{to{transform:translateX(-50%)}}
+
+/* pillars */
+.pillars{padding:var(--sec) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px}
+.sec-head .script-tag{font-size:26px;color:var(--bp-teal-deep);white-space:nowrap}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{border:1px solid var(--grey-2);background:#fff;transition:box-shadow .22s var(--ease),transform .22s var(--ease);display:flex;flex-direction:column}
+.pcard:hover{box-shadow:var(--sh-lift);transform:translateY(-3px)}
+.pcard .tex{height:340px;position:relative;overflow:hidden;background:#fff}
+.pcard .tex img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform .45s var(--ease)}
+.pcard:hover .tex img{transform:scale(1.04)}
+.pcard .tex .n{position:absolute;left:18px;bottom:10px;font-family:var(--font-display);font-stretch:normal;font-weight:400;font-size:72px;color:var(--bp-black);opacity:.9;line-height:1}
+.pcard .bd{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
+.pcard h3{font-size:24px;margin-bottom:8px}
+.pcard p{font-size:14.5px;font-weight:300;color:var(--muted);margin-bottom:18px}
+.pcard ul{list-style:none;margin-bottom:22px}
+.pcard li{font-family:var(--font-tall);font-weight:400;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:9px 0;border-bottom:1px solid var(--grey-1);display:flex;justify-content:space-between;color:var(--bp-charcoal)}
+.pcard li::after{content:"→";font-family:var(--font-display);font-weight:800;color:var(--bp-teal)}
+.pcard .go{margin-top:auto;font-family:var(--font-tall);font-weight:500;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-black)}
+.pcard .go b{font-family:var(--font-display);font-weight:800;color:var(--bp-teal)}
+.pcard:hover .go{color:var(--bp-teal-deep)}
+
+/* work */
+.work{padding:var(--sec) 0;background:
+  linear-gradient(rgba(255,255,255,.69),rgba(255,255,255,.82)),url(assets/brick.jpg) center/cover}
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.pol{background:#fff;padding:10px 10px 0;box-shadow:var(--sh-card);border:1px solid var(--grey-2);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.pol:nth-child(odd){transform:rotate(-1.6deg)}
+.pol:nth-child(even){transform:rotate(1.4deg)}
+.pol:hover{transform:rotate(0) translateY(-6px);box-shadow:var(--sh-lift);z-index:2;position:relative}
+.pol img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.pol .bar{background:var(--bp-aqua);margin:10px -10px 0;padding:10px 14px;font-family:var(--font-tall);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;color:var(--bp-black)}
+.pol:nth-child(3) .bar{background:var(--bp-pink)}
+
+/* trust */
+.trust{border-top:1px solid var(--grey-2);border-bottom:1px solid var(--grey-2)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+.trust .cell{padding:30px 26px;display:flex;gap:14px;align-items:center}
+.trust .cell+.cell{border-left:1px solid var(--grey-2)}
+.trust svg{width:26px;height:26px;stroke:var(--bp-teal-deep);flex-shrink:0;fill:none}
+.trust b{font-family:var(--font-tall);font-weight:500;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;display:block;color:var(--bp-black)}
+.trust span{font-size:12.5px;font-weight:300;color:var(--muted)}
+
+/* process */
+.proc{padding:var(--sec) 0}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:44px}
+.step .num{font-family:var(--font-display);font-stretch:normal;font-weight:400;font-size:15px;background:var(--bp-black);color:#fff;width:44px;height:44px;display:grid;place-items:center;margin-bottom:16px}
+.step b{font-family:var(--font-tall);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px;color:var(--bp-black)}
+.step p{font-size:13.5px;font-weight:300;color:var(--muted)}
+.proc .note{margin-top:40px;font-size:15px}
+.proc .note .script{font-size:26px;color:var(--bp-teal-deep);margin-right:10px}
+
+/* about */
+.about{padding:var(--sec) 0;background:var(--grey-1)}
+.about .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.about p{font-size:15.5px;font-weight:300;color:var(--muted);margin-bottom:16px;max-width:520px}
+.about p b{font-weight:600;color:var(--bp-charcoal)}
+.acard{background:var(--bp-charcoal);color:#fff;padding:40px;position:relative;overflow:hidden}
+.acard .wm{position:absolute;right:-60px;bottom:-60px;width:260px;opacity:.1;transform:rotate(-10deg)}
+.acard .lg{height:84px;width:84px;margin-bottom:26px}
+.acard .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.acard .cell{border:1px solid rgba(255,255,255,.14);padding:18px}
+.acard .cell b{font-family:var(--font-display);font-stretch:normal;font-weight:400;font-size:18px;text-transform:uppercase;display:block}
+.acard .cell span{font-family:var(--font-tall);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-aqua)}
+
+/* testimonials */
+.testi{padding:var(--sec) 0}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.tcard{border:1px solid var(--grey-2);padding:28px;background:#fff}
+.tcard .stars{color:var(--bp-teal);letter-spacing:3px;font-size:15px;margin-bottom:14px}
+.tcard blockquote{font-size:14.5px;font-weight:300;color:var(--bp-charcoal);margin-bottom:18px}
+.tcard footer{font-family:var(--font-tall);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-3)}
+.tcard footer b{color:var(--bp-black);font-weight:500}
+
+/* quote */
+.quote{padding:var(--sec) 0}
+.qpanel{background:var(--bp-charcoal);color:#fff;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;padding:64px;position:relative;overflow:hidden}
+.qpanel .wm{position:absolute;left:-40px;top:-40px;width:300px;opacity:.07;transform:rotate(-8deg);pointer-events:none}
+.qpanel .kicker{color:var(--bp-aqua)}
+.qpanel .kicker::before{background:var(--bp-aqua)}
+.qpanel h2{color:#fff;font-size:clamp(30px,3.6vw,42px)}
+.qpanel h2 .script{font-size:.95em;color:var(--bp-aqua);text-transform:none;font-weight:400}
+.qpanel .pitch{font-size:15px;font-weight:300;color:rgba(255,255,255,.75);margin:20px 0 30px;max-width:400px}
+.qpanel .alt{border-top:1px solid rgba(255,255,255,.14);padding-top:24px}
+.qpanel .alt b{font-family:var(--font-tall);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bp-aqua);display:block;margin-bottom:10px}
+.qpanel .alt a{display:block;font-size:15px;padding:4px 0;color:#fff}
+.qpanel .alt a:hover{color:var(--bp-aqua)}
+.qform{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qform label{font-family:var(--font-tall);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:6px}
+.qform input,.qform select{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;font-family:var(--font-body);font-size:14px;padding:12px 14px;outline:none}
+.qform input:focus,.qform select:focus{border-color:var(--bp-teal)}
+.qform select option{color:var(--bp-black)}
+.qform ::placeholder{color:rgba(255,255,255,.35)}
+.qform .full{grid-column:1/-1}
+.qform button{grid-column:1/-1;justify-content:center}
+.qok{grid-column:1/-1;display:none;text-align:center;padding:30px 0}
+.qok .tick{font-size:40px;color:var(--bp-teal)}
+.qok b{font-family:var(--font-display);font-stretch:normal;text-transform:uppercase;font-size:20px;display:block;margin:8px 0 4px}
+
+/* footer */
+footer.site{background:var(--bp-black);color:#fff;padding:72px 0 0}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
+.fgrid .brand img{height:64px;width:64px;margin-bottom:18px}
+.fgrid .brand p{font-size:13px;font-weight:300;color:rgba(255,255,255,.6);max-width:240px}
+.fcontact{margin-top:18px;font-size:13.5px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.7}
+.fcontact a{display:block;color:#fff;font-weight:500;margin-bottom:4px}
+.fcontact a:hover{color:var(--bp-aqua)}
+.fsocial{display:flex;gap:10px;margin-top:16px}
+.fsocial a{width:36px;height:36px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;color:#fff;transition:all .18s var(--ease)}
+.fsocial a:hover{border-color:var(--bp-aqua);color:var(--bp-aqua)}
+.fsocial svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
+.fgrid h4{font-family:var(--font-tall);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bp-aqua);margin-bottom:16px}
+.fgrid ul{list-style:none}
+.fgrid li a{display:block;font-size:13.5px;font-weight:300;color:rgba(255,255,255,.75);padding:5px 0}
+.fgrid li a:hover{color:var(--bp-aqua)}
+.fbar{border-top:1px solid rgba(255,255,255,.12);padding:20px 0}
+.fbar .wrap{display:flex;justify-content:space-between;font-family:var(--font-tall);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.fbar a:hover{color:var(--bp-aqua)}
+
+/* hero video collage */
+.vcollage{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:10px;background:#fff;padding:10px;box-shadow:var(--sh-lift)}
+.vcollage video{width:100%;height:100%;object-fit:cover;display:block}
+.vcollage .v1{height:430px}
+.vcollage .vcol{display:grid;grid-template-rows:1fr 1fr;gap:10px;height:430px}
+.vcollage .live{position:absolute;top:20px;left:20px;z-index:2;font-family:var(--font-tall);font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:#fff;color:var(--bp-black);padding:6px 10px;display:flex;align-items:center;gap:7px}
+.vcollage .live i{width:7px;height:7px;border-radius:50%;background:var(--bp-teal);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+/* categories */
+.cats{padding:var(--sec) 0;background:var(--grey-1)}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat{display:block;border:2px solid var(--bp-black);background:#fff;transition:transform .22s var(--ease),box-shadow .22s var(--ease)}
+.cat:hover{transform:translateY(-4px);box-shadow:var(--sh-lift)}
+.cat .im{aspect-ratio:1;overflow:hidden;background:#fff}
+.cat .im img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.cat:hover .im img{transform:scale(1.06)}
+.cat .bar{background:var(--bp-black);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 14px;font-family:var(--font-tall);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.cat .bar span{font-weight:400;font-size:10.5px;letter-spacing:.1em;color:var(--bp-aqua)}
+.cat:nth-child(4n+3) .bar{background:var(--bp-aqua);color:var(--bp-black)}
+.cat:nth-child(4n+3) .bar span{color:var(--bp-black);opacity:.6}
+
+/* popular sellers */
+.sellers{padding:var(--sec) 0}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod{border:2px solid var(--bp-black);background:#fff;position:relative;display:flex;flex-direction:column;transition:transform .22s var(--ease),box-shadow .22s var(--ease)}
+.prod:hover{transform:translateY(-4px);box-shadow:var(--sh-lift)}
+.prod .flag{position:absolute;top:12px;left:-2px;z-index:2;font-family:var(--font-tall);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--bp-black);color:#fff;padding:6px 12px}
+.prod .flag.aq{background:var(--bp-aqua);color:var(--bp-black)}
+.prod .hit{position:absolute;inset:0;z-index:3}
+.prod .hit:focus-visible{outline:3px solid var(--bp-teal);outline-offset:2px}
+.prod .im{aspect-ratio:1;overflow:hidden;background:#fff}
+.prod .im img{width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.prod:hover .im img{transform:scale(1.05)}
+.prod .bd{padding:16px;border-top:2px solid var(--bp-black);flex:1;display:flex;flex-direction:column}
+.prod .nm{font-size:13.5px;font-weight:500;color:var(--bp-black);line-height:1.35;min-height:37px}
+.prod .meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px}
+.prod .price{font-family:var(--font-display);font-stretch:normal;font-weight:400;font-size:21px;color:var(--bp-black);text-transform:uppercase}
+.prod .price span{font-family:var(--font-script);font-weight:400;font-size:15px;color:var(--bp-teal-deep);display:block;text-transform:none;margin-bottom:-2px}
+.dots{display:flex;gap:5px}
+.dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(17,20,23,.18)}
+
+/* seaside band */
+.band{background:url(assets/hero-main.jpg) center 40%/cover;padding:110px 0;text-align:center;position:relative;overflow:hidden}
+.band .script{font-size:clamp(42px,6vw,66px);color:#fff;text-shadow:0 3px 18px rgba(17,20,23,.4);display:block;transform:rotate(-2deg)}
+.band .t{font-family:var(--font-tall);font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#fff;text-shadow:0 2px 10px rgba(17,20,23,.45);margin-top:10px}
+.band .bd2{position:absolute;top:26px;right:5%;width:104px;height:104px;display:grid;place-items:center;animation:spin 22s linear infinite;filter:drop-shadow(0 2px 10px rgba(17,20,23,.35))}
+.band .bd2 img{width:96px}
+
+@media(max-width:1000px){
+  .cgrid,.sgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .cgrid{grid-template-columns:1fr}
+  .sgrid{grid-template-columns:1fr 1fr;gap:12px}
+  .vcollage .v1,.vcollage .vcol{height:300px}
+  .band{padding:70px 0}
+}
+
+/* brand carousel */
+.brands{padding:46px 0 52px;background:#fff;border-bottom:1px solid var(--grey-2)}
+.brands .lead{text-align:center;font-family:var(--font-tall);font-weight:500;font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--grey-3);margin-bottom:28px}
+.bmarq{overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.bmarq+.bmarq{margin-top:26px}
+.btrack{display:flex;align-items:center;gap:66px;width:max-content;animation:bscroll 64s linear infinite}
+.bmarq.rev .btrack{animation-direction:reverse;animation-duration:74s}
+.bmarq:hover .btrack{animation-play-state:paused}
+.btrack img{height:40px;width:auto;max-width:170px;object-fit:contain;opacity:.42;flex-shrink:0;
+  transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.btrack img:hover{opacity:1;transform:scale(1.06)}
+@keyframes bscroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.btrack{animation:none;flex-wrap:wrap;justify-content:center;gap:40px}}
+@media(max-width:640px){.btrack{gap:44px}.btrack img{height:32px;max-width:132px}}
+
+/* concept switcher */
+.switch{position:fixed;bottom:22px;right:22px;z-index:60;display:flex;box-shadow:var(--sh-lift)}
+.switch a{font-family:var(--font-tall);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px;background:#fff;border:1px solid var(--grey-2);color:var(--bp-black)}
+.switch a.on{background:var(--bp-black);color:#fff;border-color:var(--bp-black)}
+.switch a:not(.on):hover{background:var(--grey-1)}
+
+@media(max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr;gap:56px}
+  .pgrid,.tgrid{grid-template-columns:1fr 1fr}
+  .wgrid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .about .wrap,.qpanel{grid-template-columns:1fr}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust .cell:nth-child(3){border-left:none}
+  .trust .cell:nth-child(n+3){border-top:1px solid var(--grey-2)}
+  .nav nav,.nav .search{display:none}
+  .burger{display:block}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .mnav{flex-direction:column;border-top:1px solid var(--grey-2);padding:10px 0}
+  .mnav.open{display:flex}
+  .mnav a{font-family:var(--font-tall);font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:13px 32px;color:var(--bp-black)}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .util .r{display:none}
+  .pgrid,.tgrid,.wgrid,.steps{grid-template-columns:1fr}
+  .htrust{grid-template-columns:1fr;gap:14px}
+  .qpanel{padding:36px 24px}
+  .qform{grid-template-columns:1fr;padding:24px}
+  .hero-vis .tint{inset:16px -8px -8px 16px}
+  .badge{width:92px;height:92px;top:-24px;right:-8px}
+  .badge img{width:86px}
+  .fgrid{grid-template-columns:1fr}
+  .fbar .wrap{flex-direction:column;gap:8px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+<link rel="stylesheet" href="assets/spotlight.css">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <span><b>IN-HOUSE</b>&nbsp; DESIGN · PRINT · EMBROIDERY&nbsp; · &nbsp;YEPPOON, CENTRAL QLD&nbsp; · &nbsp;AUSTRALIA-WIDE DELIVERY</span>
+    <div class="r">
+      <a href="tel:+61749302574">07 4930 2574</a>
+      <a href="mailto:hello@beyondprint.com.au">hello@beyondprint.com.au</a>
+    </div>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a class="logo" href="./"><img src="assets/logo.svg" alt="Beyond Print"></a>
+    <nav>
+      <a href="shop/">Shop</a>
+      <a href="print/">Print</a>
+      <a href="apparel/">Apparel</a>
+      <a href="promo/">Promo</a>
+      <a href="work/">Our work</a>
+      <a href="contact/">Contact</a>
+    </nav>
+    <div class="sp"></div>
+    <a class="btn btn-dark cta" href="#quote">Get a quote <span class="arw">→</span></a>
+    <button class="burger" onclick="document.querySelector('.mnav').classList.toggle('open')">Menu</button>
+  </div>
+  <div class="mnav">
+    <a href="shop/">Shop</a>
+    <a href="print/">Print</a>
+    <a href="apparel/">Apparel</a><a href="promo/">Promo</a><a href="work/">Our work</a>
+    <a href="contact/">Contact</a><a href="#quote">Get a quote →</a>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas class="hero-gl" aria-hidden="true"></canvas>
+  <img class="wm" src="assets/logo-white.svg" alt="">
+  <div class="inner">
+    <div class="loc">Yeppoon · Capricorn Coast · QLD</div>
+    <h1>
+      <span class="l">Apparel.</span>
+      <span class="l outline">Print.</span>
+      <span class="l">Promo.</span>
+    </h1>
+    <span class="script scriptover">Build your brand!</span>
+    <div class="bar-line"><span class="blackbar">From concept to creation — all under one roof</span></div>
+    <div class="ctas">
+      <a class="btn btn-teal" href="shop/">Shop products <span class="arw">→</span></a>
+      <a class="btn btn-outline" href="#quote">Bulk or custom quote</a>
+    </div>
+    <p class="fine">*In-house design, print &amp; embroidery. Free art proof with every order. Delivered Australia-wide.</p>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true">
+  <div class="track">
+    <span>Custom Apparel</span><span>Business Cards</span><span>Mine Spec</span><span>Flags &amp; Banners</span><span>Headwear</span><span>Docket Books</span><span>Stickers &amp; Labels</span><span>Drinkware</span><span>Promo Merch</span><span>Fishing Shirts</span>
+    <span>Custom Apparel</span><span>Business Cards</span><span>Mine Spec</span><span>Flags &amp; Banners</span><span>Headwear</span><span>Docket Books</span><span>Stickers &amp; Labels</span><span>Drinkware</span><span>Promo Merch</span><span>Fishing Shirts</span>
+  </div>
+</div>
+
+<section class="pillars" id="pillars">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <div class="kicker">What we do</div>
+        <h2 class="h2">One roof. Three trades.</h2>
+        <p class="sub">From concept to creation — every job designed, produced and quality-checked by the same local team.</p>
+      </div>
+      <span class="script script-tag">No shortcuts, ever.</span>
+    </div>
+    <div class="pgrid">
+      <div class="pcard rev">
+        <div class="tex"><img src="assets/mock-print.jpg" alt="Beyond Print business cards"><span class="n">01</span></div>
+        <div class="bd">
+          <h3>Print &amp; Sticker Solutions</h3>
+          <p>Commercial print done in-house — business cards and docket books to stickers, labels and acrylic.</p>
+          <ul>
+            <li>Business print</li>
+            <li>Stickers &amp; labels</li>
+            <li>Wide format</li>
+            <li>Docket books</li>
+            <li>Flyers &amp; brochures</li>
+            <li>Acrylic prints</li>
+          </ul>
+          <a class="go" href="print/">Explore print &amp; stickers <b>→</b></a>
+        </div>
+      </div>
+      <div class="pcard rev">
+        <div class="tex"><img src="assets/mock-cap.jpg" alt="Beyond Print embroidered snapback"><span class="n">02</span></div>
+        <div class="bd">
+          <h3>Promo Solutions</h3>
+          <p>Branded merch people actually keep — drinkware, headwear, flags and giveaways that work.</p>
+          <ul>
+            <li>Promo &amp; merchandise</li>
+            <li>Drinkware &amp; coolers</li>
+            <li>Headwear</li>
+            <li>Flags &amp; banners</li>
+            <li>Keyrings &amp; magnets</li>
+            <li>Corporate gifts</li>
+          </ul>
+          <a class="go" href="promo/">Explore promo <b>→</b></a>
+        </div>
+      </div>
+      <div class="pcard rev">
+        <div class="tex"><img src="assets/mock-fishing.jpg" alt="Custom sublimated fishing shirt"><span class="n">03</span></div>
+        <div class="bd">
+          <h3>Apparel Solutions</h3>
+          <p>Uniforms and custom apparel — printed, embroidered or fully sublimated on-site.</p>
+          <ul>
+            <li>Custom apparel</li>
+            <li>Polos &amp; uniforms</li>
+            <li>Workwear &amp; mine spec</li>
+            <li>Sublimated shirts</li>
+            <li>Custom fishing shirts</li>
+            <li>Embroidery</li>
+          </ul>
+          <a class="go" href="apparel/">Explore apparel <b>→</b></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cats" id="shop">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <div class="kicker">Shop by category</div>
+        <h2 class="h2">Find your fit, fast.</h2>
+        <p class="sub">Pick a product, send your logo — we mock it up with your branding before anything prints.</p>
+      </div>
+      <a class="btn btn-outline" href="shop/">View all products <span class="arw">→</span></a>
+    </div>
+    <div class="cgrid">
+      <a class="cat rev" href="shop/#cat-apparel"><div class="im"><img src="assets/mock-tee.jpg" alt="Tees & singlets"></div><div class="bar">Tees &amp; Singlets<span>240+ styles</span></div></a>
+      <a class="cat rev" href="shop/#cat-apparel"><div class="im"><img src="assets/mock-cap.jpg" alt="Headwear"></div><div class="bar">Headwear<span>120+ styles</span></div></a>
+      <a class="cat rev" href="shop/#cat-apparel"><div class="im"><img src="assets/mock-fishing.jpg" alt="Custom fishing shirts"></div><div class="bar">Fishing Shirts<span>Fully custom</span></div></a>
+      <a class="cat rev" href="shop/#cat-apparel"><div class="im"><img src="assets/mock-polo.jpg" alt="Polos & uniforms"></div><div class="bar">Polos &amp; Uniforms<span>180+ styles</span></div></a>
+      <a class="cat rev" href="shop/#cat-stickers"><div class="im"><img src="assets/mock-stickers.jpg" alt="Stickers & labels"></div><div class="bar">Stickers &amp; Labels<span>Made in-house</span></div></a>
+      <a class="cat rev" href="shop/#cat-promo"><div class="im"><img src="assets/site/home--flags-event-banners.png" alt="Flags & banners"></div><div class="bar">Flags &amp; Banners<span>Made in-house</span></div></a>
+      <a class="cat rev" href="shop/#cat-print"><div class="im"><img src="assets/mock-print.jpg" alt="Business print"></div><div class="bar">Business Print<span>Cards to catalogues</span></div></a>
+      <a class="cat rev" href="shop/#cat-promo"><div class="im"><img src="assets/mock-cooler.jpg" alt="Drinkware & coolers"></div><div class="bar">Drinkware &amp; Coolers<span>90+ styles</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="sellers">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <div class="kicker">Shop favourites</div>
+        <h2 class="h2">This season's popular sellers.</h2>
+      </div>
+      <span class="script script-tag">Printed &amp; loved locally…</span>
+    </div>
+    <div class="sgrid">
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-tee-staple" aria-label="Customise this product"></a>
+        <span class="flag">Bestseller</span>
+        <div class="im"><img src="assets/mock-tee.jpg" alt="Staple cotton tee"></div>
+        <div class="bd"><div class="nm">Staple Cotton Tee — printed with your logo</div>
+          <div class="meta"><div class="price"><span>from</span>$12.90</div>
+          <div class="dots"><i class="dot" style="background:#111417"></i><i class="dot" style="background:#fff"></i><i class="dot" style="background:#1f3a5f"></i><i class="dot" style="background:#5eafa6"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-cap-snap" aria-label="Customise this product"></a>
+        <div class="im"><img src="assets/mock-cap.jpg" alt="Classic snapback"></div>
+        <div class="bd"><div class="nm">Classic Snapback — embroidered front logo</div>
+          <div class="meta"><div class="price"><span>from</span>$12.50</div>
+          <div class="dots"><i class="dot" style="background:#111417"></i><i class="dot" style="background:#6e7174"></i><i class="dot" style="background:#1f3a5f"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-fishing" aria-label="Customise this product"></a>
+        <span class="flag aq">Local favourite</span>
+        <div class="im"><img src="assets/mock-fishing.jpg" alt="Custom sublimated fishing shirt"></div>
+        <div class="bd"><div class="nm">Custom Sublimated Fishing Shirt — full design</div>
+          <div class="meta"><div class="price"><span>from</span>$39.00</div>
+          <div class="dots"><i class="dot" style="background:linear-gradient(135deg,#5eafa6,#f8bec2)"></i><i class="dot" style="background:#5eafa6"></i><i class="dot" style="background:#a3dbd3"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-polo-pique" aria-label="Customise this product"></a>
+        <div class="im"><img src="assets/mock-polo.jpg" alt="Pique polo"></div>
+        <div class="bd"><div class="nm">Pique Polo — embroidered, uniform-ready</div>
+          <div class="meta"><div class="price"><span>from</span>$24.50</div>
+          <div class="dots"><i class="dot" style="background:#1f3a5f"></i><i class="dot" style="background:#111417"></i><i class="dot" style="background:#fff"></i><i class="dot" style="background:#5eafa6"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-sticker-die" aria-label="Customise this product"></a>
+        <div class="im"><img src="assets/mock-stickers.jpg" alt="Die-cut vinyl stickers"></div>
+        <div class="bd"><div class="nm">Die-Cut Vinyl Stickers — any shape, any size</div>
+          <div class="meta"><div class="price"><span>from</span>$0.40</div>
+          <div class="dots"><i class="dot" style="background:#111417"></i><i class="dot" style="background:#fff"></i><i class="dot" style="background:#f8bec2"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-cards" aria-label="Customise this product"></a>
+        <span class="flag">Popular</span>
+        <div class="im"><img src="assets/mock-print.jpg" alt="Business cards"></div>
+        <div class="bd"><div class="nm">Business Cards ×250 — premium stock</div>
+          <div class="meta"><div class="price"><span>from</span>$89.00</div>
+          <div class="dots"><i class="dot" style="background:#fff"></i><i class="dot" style="background:#f8bec2"></i><i class="dot" style="background:#a3dbd3"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-tumbler" aria-label="Customise this product"></a>
+        <div class="im"><img src="assets/site/promo--three-custom-tumblers.jpg" alt="Custom printed tumblers"></div>
+        <div class="bd"><div class="nm">Custom Tumbler — your logo, full colour</div>
+          <div class="meta"><div class="price"><span>from</span>$12.90</div>
+          <div class="dots"><i class="dot" style="background:#fff"></i><i class="dot" style="background:#111417"></i></div></div></div>
+      </div>
+      <div class="prod rev">
+        <a class="hit" href="shop/#p-cooler" aria-label="Customise this product"></a>
+        <div class="im"><img src="assets/mock-cooler.jpg" alt="Neoprene can cooler"></div>
+        <div class="bd"><div class="nm">Neoprene Can Cooler — full colour print</div>
+          <div class="meta"><div class="price"><span>from</span>$4.90</div>
+          <div class="dots"><i class="dot" style="background:#5eafa6"></i><i class="dot" style="background:#111417"></i><i class="dot" style="background:#f8bec2"></i></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <div class="kicker">Fresh from the shop floor</div>
+        <h2 class="h2">Real jobs. Real deals.</h2>
+        <p class="sub">A taste of what leaves the workshop every week.</p>
+      </div>
+      <a class="btn btn-dark" href="shop/">Shop the range <span class="arw">→</span></a>
+    </div>
+    <div class="wgrid">
+      <div class="pol rev"><img src="assets/promo-win.jpg" alt="Win 10 custom fishing shirts promotion"><div class="bar"><span>Promo</span><span>Fishing shirts</span></div></div>
+      <div class="pol rev"><img src="assets/tee-deal.jpg" alt="Double 6 deal pack — tees and caps"><div class="bar"><span>Apparel</span><span>Tee 6-pack</span></div></div>
+      <div class="pol rev"><img src="assets/site/print-stickers-and-labels--yepp-brewery-label-stickers-stack.jpg" alt="Yepp Brewery label stickers"><div class="bar"><span>Print</span><span>Product labels</span></div></div>
+      <div class="pol rev"><img src="assets/caps-giveaway.jpg" alt="Caps giveaway promotion"><div class="bar"><span>Promo</span><span>Caps giveaway</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proc" id="process">
+  <div class="wrap">
+    <div class="rev">
+      <div class="kicker">How it works</div>
+      <h2 class="h2">Five steps. No surprises.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rev"><div class="num">01</div><b>Pick your product</b><p>Choose the item, colours, sizes and quantity.</p></div>
+      <div class="step rev"><div class="num">02</div><b>Add your logo &amp; order</b><p>Upload your artwork and check out securely.</p></div>
+      <div class="step rev"><div class="num">03</div><b>Free art proof</b><p>Once your order's in, we send a proof. Nothing prints until you approve it.</p></div>
+      <div class="step rev"><div class="num">04</div><b>Production</b><p>Made in-house and checked twice before it leaves the workshop.</p></div>
+      <div class="step rev"><div class="num">05</div><b>Delivered</b><p>Freight to your door, anywhere in Australia.</p></div>
+    </div>
+    <p class="note rev"><span class="script">Quality before price.</span> If it's not right, it doesn't leave the workshop.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="rev">
+      <div class="kicker">About Beyond Print</div>
+      <h2 class="h2">Made in Yeppoon.<br>Shipped everywhere.</h2>
+      <p style="margin-top:18px">We're a <b>print, apparel and promo shop on the Capricorn Coast</b> with a full in-house design service — so your branding stays consistent across every product we make for you.</p>
+      <p>We love pushing the boundaries and delivering more than just products. Our design team has <b>no hesitation in rejecting ugly ideas</b> — that's a feature, not a bug. We believe in quality before price, we don't take shortcuts, and we back our depth of experience and skills on every job.</p>
+      <a class="btn btn-dark" style="margin-top:14px" href="#quote">Start your enquiry <span class="arw">→</span></a>
+    </div>
+    <div class="acard rev">
+      <img class="wm" src="assets/circle-text.png" alt="">
+      <img class="lg" src="assets/logo-white.svg" alt="Beyond Print">
+      <div class="grid">
+        <div class="cell"><b>Design</b><span>In-house studio</span></div>
+        <div class="cell"><b>Print</b><span>Digital &amp; wide format</span></div>
+        <div class="cell"><b>Embroidery</b><span>On-site machines</span></div>
+        <div class="cell"><b>Delivery</b><span>Australia-wide</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shipfaq" id="delivery">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <div class="kicker">Delivery &amp; ordering</div>
+        <h2 class="h2">Ordered online.<br>Posted to your door.</h2>
+        <p class="sub">Everything in the shop ships Australia-wide from our Yeppoon workshop.</p>
+      </div>
+      <a class="btn btn-outline" href="shop/">Start shopping <span class="arw">→</span></a>
+    </div>
+    <div class="sfgrid">
+      <div class="sf rev"><b>What it costs</b><p>Standard delivery is $14.95 and free on orders over $250. Express is $24.95. Pick up from 44 McBean Street, Yeppoon, is always free.</p></div>
+      <div class="sf rev"><b>How long it takes</b><p>Your free art proof arrives within one business day. Once you approve it, most orders are made in 5–10 business days, then 1–7 days in the post.</p></div>
+      <div class="sf rev"><b>Where we send</b><p>Anywhere in Australia with Australia Post or courier. Remote and island addresses can take a few extra days.</p></div>
+      <div class="sf rev"><b>Tracking &amp; misprints</b><p>Every parcel gets a tracking link by email. If anything arrives misprinted or damaged, tell us within 7 days and we reprint it free.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="testi">
+  <div class="wrap">
+    <div class="rev">
+      <div class="kicker">What clients say</div>
+      <h2 class="h2">People we've printed for.</h2>
+    </div>
+    <div class="tgrid">
+      <div class="tcard rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The proof nailed our branding first go and the shirts turned up before the deadline. Couldn't fault the service."</blockquote>
+        <footer><b>Sample client</b> · Yeppoon</footer>
+      </div>
+      <div class="tcard rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>"They talked us out of a design that wasn't working and the replacement was miles better. That's why you use a real design team."</blockquote>
+        <footer><b>Sample client</b> · Rockhampton</footer>
+      </div>
+      <div class="tcard rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Uniforms, caps and stickers all matched perfectly because it was all done under one roof. Easy."</blockquote>
+        <footer><b>Sample client</b> · Emu Park</footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="bd2"><img src="assets/circle-text.png" alt="Beyond the ordinary"></div>
+  <span class="script">Beyond ordinary.</span>
+  <div class="t">Yeppoon · Capricorn Coast · Queensland</div>
+</div>
+
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="qpanel rev">
+      <img class="wm" src="assets/circle-text.png" alt="">
+      <div>
+        <div class="kicker">Tell us what you need</div>
+        <h2>Quotes made <span class="script">easy.</span></h2>
+        <p class="pitch">Send a quick brief — product, quantity, deadline — and one of our team will come back with options and honest pricing. No obligation. Real humans, not AI.</p>
+        <div class="alt">
+          <b>Prefer to talk?</b>
+          <a href="tel:+61749302574">07 4930 2574</a>
+          <a href="mailto:hello@beyondprint.com.au">hello@beyondprint.com.au</a>
+          <a href="contact/">Showroom · 44 McBean Street, Yeppoon QLD</a>
+          <a href="https://www.beyondprint.com.au/" target="_blank" rel="noopener">Shopfront signs or vehicle wraps? Visit our services site ↗</a>
+        </div>
+      </div>
+      <form class="qform" onsubmit="return qsend(this)">
+        <div><label>Your name</label><input required placeholder="Jordan Lee"></div>
+        <div><label>Company</label><input placeholder="Your business"></div>
+        <div><label>Email</label><input required type="email" placeholder="you@brand.com.au"></div>
+        <div><label>Phone</label><input placeholder="04xx xxx xxx"></div>
+        <div class="full"><label>What are you after?</label><input required placeholder="e.g. 50 sublimated fishing shirts for our comp"></div>
+        <div><label>Approx quantity</label><input placeholder="50"></div>
+        <div><label>By when?</label><select><option>In the next 2 weeks</option><option>In the next month</option><option>Just planning ahead</option></select></div>
+        <button class="btn btn-teal" type="submit">Get my quote <span class="arw">→</span></button>
+        <div class="qok"><div class="tick">✓</div><b>Got it — we're on it.</b><span style="font-size:13.5px;font-weight:300;color:rgba(255,255,255,.7)">Our team will be in touch shortly.</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap fgrid">
+    <div class="brand">
+      <img src="assets/logo-white.svg" alt="Beyond Print">
+      <p>Print, apparel &amp; promo on the Capricorn Coast. In-house design, production and a showroom you can actually walk into. Beyond ordinary since day one.</p>
+      <div class="fcontact">
+        <a href="tel:+61749302574">07 4930 2574</a>
+        <span>44 McBean Street<br>Yeppoon QLD Australia</span>
+      </div>
+      <div class="fsocial">
+        <a href="https://www.instagram.com/beyondprint.yeppoon" target="_blank" rel="noopener" aria-label="Beyond Print on Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/BeyondPrintYeppoon" target="_blank" rel="noopener" aria-label="Beyond Print on Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Print &amp; Stickers</h4>
+      <ul><li><a href="print/">Business print</a></li><li><a href="stickers/">Stickers &amp; labels</a></li><li><a href="https://www.beyondprint.com.au/" target="_blank" rel="noopener">Signs &amp; vehicle branding ↗</a></li></ul>
+    </div>
+    <div>
+      <h4>Promo</h4>
+      <ul><li><a href="promo/">Promo &amp; merch</a></li><li><a href="promo/">Drinkware &amp; coolers</a></li><li><a href="promo/">Headwear</a></li><li><a href="promo/">Flags &amp; banners</a></li></ul>
+    </div>
+    <div>
+      <h4>Apparel</h4>
+      <ul><li><a href="apparel/">Custom apparel</a></li><li><a href="apparel/">Polos &amp; uniforms</a></li><li><a href="apparel/">Sublimated shirts</a></li><li><a href="apparel/">Fishing shirts</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="shop/">Shop online</a></li><li><a href="about/">About us</a></li><li><a href="how-it-works/">How it works</a></li><li><a href="#quote">Get a quote</a></li><li><a href="contact/">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="fbar">
+    <div class="wrap">
+      <span>© 2026 Beyond Print · Yeppoon QLD · ABN 41 143 985 242</span>
+      <span>Designed &amp; built by <a href="#" style="color:#fff">Appbox</a></span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const hd=document.getElementById('hd');
+const setHd=()=>document.documentElement.style.setProperty('--hd-h',hd.offsetHeight+'px');setHd();addEventListener('resize',setHd);
+addEventListener('scroll',()=>hd.classList.toggle('sc',scrollY>20),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function qsend(f){[...f.children].forEach(c=>{if(!c.classList.contains('qok'))c.style.display='none'});f.querySelector('.qok').style.display='block';return false}
+</script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/products.js" defer></script>
+<script src="assets/search.js" defer></script>
+<script src="assets/cart.js" defer></script>
+<script src="assets/hero-gradient.js" defer></script>
+</body>
+</html>
